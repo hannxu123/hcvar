@@ -3,9 +3,12 @@ This is a repository for training binary classifcation models to distinguish hum
 We collect a new dataset HC-Var (Human and ChatGPT texts with Variety) to fulfill our objective. 
 This dataset includes the texts which are generated / human written to accomplish various language tasks with various approaches. 
 The included language tasks and topics are summarized below. 
-Note: For each language task, this dataset considers 3 different prompts to inquire ChatGPT outputs.The HC-Var dataset is available now in hugging face: https://huggingface.co/datasets/hannxu/hc_var. 
+The HC-Var dataset is available now in hugging face: https://huggingface.co/datasets/hannxu/hc_var. 
 
 ## Dataset Summary
+This dataset contains human and ChatGPT texts to fulfill 4 distinct language tasks, including news composing (News), review (Review), essay writing (Writing) and question answering (QA). Under each task, 
+we collect the human and ChatGPT generated texts with one or multiple topics. 
+For each language task, this dataset considers 3 different prompts to inquire ChatGPT outputs. 
 
 | Domain (Task) | News   | News   | News     | Review | Review | Writing  | QA      | QA      | QA      | QA      |
 |---------------|--------|--------|----------|--------|--------|----------|---------|---------|---------|---------|
