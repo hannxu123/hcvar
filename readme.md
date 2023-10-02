@@ -24,7 +24,7 @@ The code is primary runned and examined under python 3.10.12, torch 2.0.1. To in
 pip install -r requirements.txt
 ```
 ## To train the model
-This repository currently supports training classification models under RoBERTa-base, RoBERTa-large and T5 (with various architectures, usually T5-small and T5-base).
+This repository currently supports training classification models under RoBERTa-base, RoBERTa-large and T5 (we test under T5-base).
 An example command to run the code to train a RoBERTa-base classification model and test the model on the domain "review".
 ```ruby
 python -m detector.train_binary_cls --domain review 
