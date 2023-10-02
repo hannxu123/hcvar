@@ -27,7 +27,7 @@ pip install -r requirements.txt
 This repository currently supports training classification models under RoBERTa-base, RoBERTa-large and T5 (we test under T5-base).
 An example command to run the code to train a RoBERTa-base classification model and test the model on the domain "review".
 ```ruby
-python -m detector.train_binary_cls --domain review 
+python -m detector.train_roberta --domain review 
 ```
 For details, the training process includes 3 major steps:
 1. Load the training, validation and test dataloaders.
