@@ -23,15 +23,50 @@ The code is primary runned and examined under python 3.10.12, torch 2.0.1. To in
 ```ruby
 pip install -r requirements.txt
 ```
-## To run the code
-An example code to run the code to train a RoBERTa-base classification model and test the model on the domain "review".
+## To train the model
+An example command to run the code to train a RoBERTa-base classification model and test the model on the domain "review".
 ```ruby
 python -m detector.train_binary_cls --domain review 
 ```
+For details, the training process includes 3 major steps:
+1. Load the training, validation and test dataloaders.
+```ruby
+train_loader, valid_loader, test_loader = Loader(batch_size = 32, domain=domain, cache_dir = cache_dir)
+```
+2. Initilize the classification model and optimizer:
+```ruby
+model_name = 'roberta-large' 
+tokenizer = RobertaTokenizer.from_pretrained(model_name)
+model = RobertaForSequenceClassification.from_pretrained(model_name).to(device)
+optimizer = AdamW(model.parameters(), lr=learning_rate)
+```
+3. Train the model.
+```ruby
+def train(model, tokenizer, optimizer, device, loader):
+    model.train()
+    for i, dat in enumerate(loader):
+        texts, labels = dat
+        texts = list(texts)
+        result = tokenizer(texts, return_tensors="pt", padding = 'max_length', max_length = 256, truncation=True)
+        texts, masks, labels = result['input_ids'].to(device), result['attention_mask'].to(device), labels.to(device)
+        aa = model(texts, labels=labels, attention_mask = masks)
+        loss = aa['loss']
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+```
+## To evaluate the model
+We define 3 types of test data loaders to evaluate the models performance facing different varieties.
+For example, to evaluate a model's performance when test samples are divided in different tasks:
+```ruby
+test_loader = Domain_loader(domain= "TaskName", cache_dir = cache_dir)  ## TaskName can be News, Review, Writing, QA
+```
+Or when test samples are divided in different topics in the same task, i.e., QA:
+```ruby
+test_loader = Topic_loader(domain= 'QA', topic = "TopicName", cache_dir = cache_dir)  ## TopicName can be history, finance, medical, science
+```
+Or when test samples are divided in different prompts in the same task, i.e., QA:
+```ruby
+test_loader = Prompt_loader(domain= 'QA', prompt = promptid, cache_dir = cache_dir)  ## promptid can be "P1", "P2", "P3"
+```
 
-## To evaluate the generalization of detectors
-1. Load dataset
-
-2. XXX the model
-
-3. Train the model
