@@ -18,7 +18,7 @@ For each language task, this dataset considers 3 different prompts to inquire Ch
 | Human Source  | XSum   | XSum   | XSum     | IMDb   | Yelp   | IvyPanda | FiQA    | Reddit  | MedQuad | Reddit  |
 
 
-## Enivornments
+## Environments
 The code is primary runned and examined under python 3.10.12, torch 2.0.1. To install other required packages using the command:
 ```ruby
 pip install -r requirements.txt
