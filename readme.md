@@ -71,3 +71,14 @@ Or when test samples are divided in different prompts in the same task, i.e., QA
 test_loader = Prompt_loader(domain= 'QA', prompt = promptid, cache_dir = cache_dir)  ## promptid can be "P1", "P2", "P3"
 ```
 
+## To cite our dataset, code or paper:
+```
+@misc{xu2023generalization,
+      title={On the Generalization of Training-based ChatGPT Detection Methods}, 
+      author={Han Xu and Jie Ren and Pengfei He and Shenglai Zeng and Yingqian Cui and Amy Liu and Hui Liu and Jiliang Tang},
+      year={2023},
+      eprint={2310.01307},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
